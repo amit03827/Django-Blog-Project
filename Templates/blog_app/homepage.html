@@ -1,0 +1,12 @@
+{% extends 'blog_app/structure.html' %}
+
+{% block title_header %} Our Best Blogs...  {% endblock title_header%}
+
+{% block main_body %}
+
+
+     {% for post in all_posts %}
+          {% include 'blog_app/blog_card.html' with post_data=post%}
+     {% endfor %}
+
+{% endblock main_body %}

@@ -1,0 +1,46 @@
+<h2 class="underscore">{{post.title}}</h2>
+    <div class="post-meta">
+      <span><i class="far fa-user" aria-hidden="true"></i> {{post.created_date}}</span><span><i class="far fa-calendar" aria-hidden="true"></i> 30 07 2021</span><span><i class="far fa-comment-alt" aria-hidden="true"></i> 0 comments</span>
+    </div>
+    <img src="{{post.blog_image.url}}" alt="" class="img-fluid" />
+
+
+    <div>
+  {{post.content|safe}}
+</div>
+
+
+    <div class="share">
+      <a class="main-button" href=""><i class="fab fa-facebook-f" aria-hidden="true"></i> FACEBOOK</a>
+      <a class="main-button" href=""> <i class="fab fa-google-plus-g" aria-hidden="true"></i> GOOGLE+</a>
+      <a class="main-button" href=""><i class="fab fa-twitter" aria-hidden="true"></i> TWITTER</a>
+      <a class="main-button" href=""><i class="fab fa-linkedin-in" aria-hidden="true"></i> LINKEDIN</a>
+      <a class="main-button" href=""><i class="fab fa-pinterest-p" aria-hidden="true"></i> PINTEREST</a>
+    </div>
+    <div class="navigation">
+      <a class="prew"><i class="fas fa-chevron-left" aria-hidden="true"></i> PREVIOUS</a>
+      <a class="next">NEXT <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="line"></div>
+    <form id="commentForm" method='POST'>
+      {% csrf_token %}
+      <!-- Message input -->
+      <div class="mb-3">
+        <label class="form-label" for="comment">Leave a Comment</label>
+        <textarea class="comment_body" id="comment" type="text" placeholder="" style="height: 10rem;" data-sb-validations="required"></textarea>
+        <div class="invalid-feedback" data-sb-feedback="message:required">Comment is required.</div>
+      </div>
+      <!-- Name input -->
+      <div class="mb-3">
+        <input name="comment_author" value='' class="form-control" id="name" type="text" placeholder="Name *" data-sb-validations="required">
+        <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+      </div>
+      <!-- Form submissions error message -->
+      <div class="d-none" id="submitErrorMessage">
+        <div class="text-center mb-3">Error sending message!</div>
+      </div>
+      <!-- Form submit button -->
+      <div class="d-grid">
+        <button class="main-button" id="submitButton" type="submit">Post Comment</button>
+      </div>
+    </form>
